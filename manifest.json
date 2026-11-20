@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "OLX Garimpo",
-  "version": "1.0.0",
+  "version": "1.0.0.0",
   "description": "Vigia buscas da OLX e avisa quando aparece anúncio novo ou quando um preço baixa.",
   "permissions": ["storage", "alarms", "notifications", "tabs", "scripting"],
   "host_permissions": ["https://*.olx.com.br/*", "https://ntfy.sh/*"],
