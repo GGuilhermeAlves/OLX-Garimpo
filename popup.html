@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>OLX Garimpo</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><img src="icons/icon32.png" alt=""> OLX Garimpo</div>
+    <button id="scanNow" class="btn small">↻ Verificar agora</button>
+  </header>
+  <div id="status" class="status"></div>
+
+  <nav>
+    <button data-tab="alerts" class="active">Alertas <span id="unread" class="pill"></span></button>
+    <button data-tab="live">Na faixa agora</button>
+    <button data-tab="watches">Buscas</button>
+    <button data-tab="settings">Ajustes</button>
+  </nav>
+
+  <section id="tab-alerts" class="tab active">
+    <div class="toolbar">
+      <span class="muted">Anúncios novos e quedas de preço</span>
+      <button id="markRead" class="link">marcar tudo como visto</button>
+    </div>
+    <div id="alertsList" class="list"></div>
+  </section>
+
+  <section id="tab-live" class="tab">
+    <div class="toolbar">
+      <select id="liveWatch"></select>
+      <span class="muted" id="liveInfo"></span>
+    </div>
+    <div id="liveList" class="list"></div>
+  </section>
+
+  <section id="tab-watches" class="tab">
+    <div id="watchesList"></div>
+
+    <form id="watchForm" class="card form">
+      <h3 id="formTitle">Nova busca</h3>
+      <input type="hidden" id="fId">
+      <label>Nome <input id="fName" placeholder="MacBook Air M4" required></label>
+      <label>Link da busca na OLX
+        <input id="fUrl" placeholder="https://www.olx.com.br/informatica/notebooks?q=macbook%20air%20m4" required>
+      </label>
+      <button type="button" id="useTab" class="link">usar a busca da aba aberta</button>
+      <div class="row">
+        <label>Preço mín. <input id="fMin" type="number" min="0" placeholder="3000"></label>
+        <label>Preço máx. <input id="fMax" type="number" min="0" placeholder="5600"></label>
+      </div>
+      <label>Título precisa ter <small>(todas, separadas por vírgula)</small>
+        <input id="fInclude" placeholder="m4">
+      </label>
+      <label>Ignorar se o título tiver <small>(qualquer uma)</small>
+        <input id="fExclude" placeholder="compro, troco por, defeito">
+      </label>
+      <div class="row end">
+        <button type="button" id="cancelEdit" class="btn ghost hidden">Cancelar</button>
+        <button type="submit" class="btn">Salvar busca</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="tab-settings" class="tab">
+    <div class="card form">
+      <label>Verificar a cada (minutos)
+        <input id="sInterval" type="number" min="1" max="120">
+      </label>
+      <label class="check"><input type="checkbox" id="sDesktop"> Notificação no computador</label>
+      <label class="check"><input type="checkbox" id="sSticky"> Manter a notificação na tela até eu clicar</label>
+      <label>Aviso no celular (ntfy) — tópico
+        <input id="sNtfy" placeholder="ex.: garimpo-joao-8f3k2">
+      </label>
+      <p class="hint">Instale o app <b>ntfy</b> (Android/iPhone), toque em “+” e assine o mesmo tópico. Use um nome difícil de adivinhar: qualquer pessoa que souber o tópico consegue ler os avisos.</p>
+      <div class="row end">
+        <button id="testNotify" class="btn ghost">Enviar teste</button>
+        <button id="saveSettings" class="btn">Salvar</button>
+      </div>
+    </div>
+    <p class="hint">O Chrome precisa estar aberto para a extensão vigiar. O computador em suspensão também pausa a vigia.</p>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
